@@ -137,6 +137,7 @@ class linkedList
     /**
      * to display the linked list
      */
+    
     display()
     {
         let current=this.head;
@@ -320,6 +321,32 @@ class Queue
             return true;
         else
             return false;
+    }
+    /**
+     * for sorted queue
+     */
+    sorted(value){
+        let node=new Node(value,null); 
+        
+         if (this.ll.head == null
+            ||parseInt(parseFloat(this.ll.head.data.rank1)-parseFloat(node.data.rank1))>=0) 
+		{ 
+            node.next = this.ll.head; 
+            this.ll.head = node; 
+            this.size++;
+		} 
+		else { 
+			let current = this.ll.head; 
+
+            while (current.next != null 
+                && parseFloat(current.next.data.rank1) < parseFloat(node.data.rank1)) 
+            {
+                current = current.next; 
+            }
+			node.next = current.next; 
+            current.next = node;
+            this.size++; 
+        }
     }
 }
 /**
